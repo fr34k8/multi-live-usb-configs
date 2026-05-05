@@ -49,7 +49,7 @@ item fedora-mirror-server Boot Fedora installer Server edition [mirror]
 item fedora-mirror-silverblue Boot Fedora installer Silverblue edition [mirror]
 item fedora-mirror-everything Boot Fedora installer Everything edition [mirror]
 #item ubuntu		Boot Ubuntu installer [32bit, eoan]
-#item ubuntu64		Boot Ubuntu installer [64bit, current]
+item ubuntu64		Boot Ubuntu installer [64bit, current]
 item slitaz		Boot SliTaz
 item slitaz-rolling	Boot SliTaz [rolling]
 item slitaz64		Boot SliTaz64
@@ -149,22 +149,22 @@ chain http://slax.org/ipxe/?arch=64bit
   chain ${210:string}pxelinux.0
 
 :fedora-mirror-server
-  set fedora_version:string 43
+  set fedora_version:string 44
   set fedora_variant Server
   goto fedora-boot
 
 :fedora-mirror-workstation
-  set fedora_version:string 43
+  set fedora_version:string 44
   set fedora_variant Server
   goto fedora-boot
 
 :fedora-mirror-everything
-  set fedora_version:string 43
+  set fedora_version:string 44
   set fedora_variant Everything
   goto fedora-boot
 
 :fedora-mirror-silverblue
-  set fedora_version:string 43
+  set fedora_version:string 44
   set fedora_variant Silverblue
   goto fedora-boot
 
@@ -202,12 +202,13 @@ chain http://slax.org/ipxe/?arch=64bit
 #  initrd ${210:string}initrd.gz
 #  chain ${210:string}linux
 #
-#:ubuntu64
-#
-#  dhcp
-#  set 210:string http://archive.ubuntu.com/ubuntu/dists/groovy/main/installer-amd64/current/legacy-images/netboot/ubuntu-installer/amd64/
-#  initrd ${210:string}initrd.gz
-#  chain ${210:string}linux
+:ubuntu64
+
+  dhcp
+  set ubu:string http://ftp.icm.edu.pl/Linux/dist/ubuntu-releases/resolute
+  initrd ${ubu:string}/netboot/amd64/initrd
+  chain ${ubu:string}/netboot/amd64/linux iso-url=https://staticfiles.abs.assecobs.pl/distfiles/ubuntu-26.04-desktop-amd64.iso ip=dhcp
+
 
 
 #
