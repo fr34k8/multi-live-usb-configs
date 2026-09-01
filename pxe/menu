@@ -171,7 +171,7 @@ chain http://slax.org/ipxe/?arch=64bit
 # pick your mirror
 :fedora-boot
   dhcp
-  set baseurl:string http://ftp.icm.edu.pl/pub/Linux/fedora/linux/releases/${fedora_version:string}/${fedora_variant:string}/x86_64/os
+  set baseurl:string http://fedora.mirrorservice.org/fedora/linux/releases/${fedora_version:string}/${fedora_variant:string}/x86_64/os
   initrd ${baseurl:string}/images/pxeboot/initrd.img
   chain  ${baseurl:string}/images/pxeboot/vmlinuz inst.repo=${baseurl:string} root=live:${baseurl:string}/images/install.img
 
